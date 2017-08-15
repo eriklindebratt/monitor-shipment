@@ -11,17 +11,11 @@ const args = processArgs([
   { name: 'lang', alias: 'l', type: String, defaultValue: 'en' }
 ])
 
-const validLanguages = ['en', 'sv']
 const checkInterval = 300000
 let previousEvent = null
 
 if (!args.shipmentId) {
   console.error('Invalid shipment ID. Please pass one using `--shipmentId=<shipmentId>` or `-s <shipmentId>`')
-  process.exit(1)
-}
-
-if (!validLanguages.includes(args.lang)) {
-  console.error(`Invalid language. Valid ones are ${validLanguages.map(l => JSON.stringify(l)).join(', ')}.`)
   process.exit(1)
 }
 
