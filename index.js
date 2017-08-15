@@ -11,7 +11,7 @@ const args = processArgs([
 ])
 
 const validLanguages = ['en', 'sv']
-const checkInterval = 5000
+const checkInterval = 300000;
 let previousEvent = null
 
 if (!args.shipmentId) {
