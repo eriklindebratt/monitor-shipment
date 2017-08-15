@@ -22,7 +22,9 @@ if (!args.shipmentId) {
 function notify(event) {
   notifier.notify({
     title: `New shipment update! (${args.shipmentId})`,
-    message: event.eventDescription
+    subtitle: event.location.displayName,
+    message: event.eventDescription,
+    timeout: checkInterval
   })
 
   spawn('say', ['New shipment update!'])
@@ -55,7 +57,7 @@ function checkForUpdates() {
     const latestEvent = events[events.length-1]
 
     if (!previousEvent || previousEvent.eventTime !== latestEvent.eventTime) {
-      console.log(`Got new event!\n - ${latestEvent.eventDescription}`)
+      console.log(`Got new event!\n - [${latestEvent.location.displayName}] ${latestEvent.eventDescription}`)
       previousEvent = latestEvent
       notify(latestEvent)
     }
